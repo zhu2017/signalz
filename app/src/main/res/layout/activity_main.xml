@@ -31,4 +31,11 @@
         android:id="@+id/add"
         android:text="发送"
         />
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/go"
+    android:text="跳转"
+        app:layout_constraintLeft_toRightOf="@+id/add"
+    />
 </android.support.constraint.ConstraintLayout>

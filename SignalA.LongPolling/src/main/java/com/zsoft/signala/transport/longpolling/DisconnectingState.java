@@ -84,8 +84,8 @@ public class DisconnectingState extends StateBase {
 		ParameterMap params = httpClient.newParams();
 
 		try {
-			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
-//			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
+//			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
+			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
 			Method method=clazz.getMethod("getUrls");
 			Object o=clazz.newInstance();
 			url+=(String) method.invoke(o);

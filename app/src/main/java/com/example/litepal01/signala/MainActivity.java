@@ -1,5 +1,6 @@
 package com.example.litepal01.signala;
 
+import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             args.add("app");
             args.add("客户端请求");
             //网服务器传参数
+            if (hub==null)return;
                         hub.Invoke("SendLiveMsg", args, new com.zsoft.signala.hubs.HubInvokeCallback() {
                             @Override
                             public void OnResult(boolean succeeded, String response) {
@@ -61,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d(TAG, "OnError: "+ex);
                             }
                         });
+        });
+        Button btn3=(Button)findViewById(R.id.go);
+        btn3.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,TestActivity.class));
+//            finish();
         });
     }
 //    public void startSignalA() {
@@ -110,10 +117,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void OnError(Exception exception) {
+                if (con!=null)
+                    con.Stop();
+                if (exception.toString().contains("ConnectException")){
+                    Toast.makeText(MainActivity.this, "请检查网络" + exception.getMessage(), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
                 Toast.makeText(MainActivity.this, "On error: 连接失败" + exception.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d(TAG, "OnError: "+ "On error: " + exception.getMessage());
-                if (con!=null)
-                con.Stop();
+
             }
 
         };
@@ -151,32 +165,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-//            @Override
-//            public void OnReceived(JSONArray args) {
-//
-//                String jsons=args.toString();
-
-//
-//                for(int i=0; i<args.length(); i++)
-//                {
-//                    Toast.makeText(MainActivity.this, "New message\n" + args.opt(i).toString(), Toast.LENGTH_SHORT).show();
-//                }
-//                if (args.opt(0).toString().equals("1")) {
-//
-//                    Log.d(TAG, "OnReceived: "+args.opt(1).toString());
-//
-//       } else {
-//                    Log.d(TAG, "OnReceived: "+args.opt(1).toString());
-//                }
-
-//            }
         });
 
 
         con.Start();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(con!=null)
+            con.Stop();
+    }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(con!=null)
+            con=null;
+    }
 }

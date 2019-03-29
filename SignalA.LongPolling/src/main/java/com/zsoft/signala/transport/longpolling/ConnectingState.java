@@ -13,6 +13,8 @@ import com.zsoft.signala.transport.ProcessResult;
 import com.zsoft.signala.transport.TransportHelper;
 import com.zsoft.parallelhttpclient.ParallelHttpClient;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class ConnectingState extends StopableStateWithCallback {
@@ -112,9 +114,23 @@ public class ConnectingState extends StopableStateWithCallback {
         {
             httpClient.addHeader(entry.getKey(), entry.getValue());
         }
-        String path="&id=50E7CEE6-A5C0-42E5-B4D5-FC5DC98BC875&liveid=3eb6e98c-feac-4034-b12c-573a21a8e4c8&name=xxt&key=c1a2t3c4h5e6r";
-
-        url+=path;
+        try {
+//			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
+            Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
+            Method method=clazz.getMethod("getUrls");
+            Object o=clazz.newInstance();
+            url+=(String) method.invoke(o);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
         httpClient.get(url, null, cb);
 	}
 
