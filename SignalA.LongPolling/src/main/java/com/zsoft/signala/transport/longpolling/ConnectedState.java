@@ -99,8 +99,8 @@ public class ConnectedState extends StopableStateWithCallback {
 		        						.add("data", text.toString());
         httpClient.setMaxRetries(1);
 		try {
-			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
-//			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
+//			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
+			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
 			Method method=clazz.getMethod("getUrls");
 			Object o=clazz.newInstance();
 			url+=(String) method.invoke(o);
@@ -197,8 +197,8 @@ public class ConnectedState extends StopableStateWithCallback {
 		ParameterMap params = httpClient.newParams();
 
 		try {
-			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
-//			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
+//			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
+			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
 			Method method=clazz.getMethod("getUrls");
 			Object o=clazz.newInstance();
 			url+=(String) method.invoke(o);

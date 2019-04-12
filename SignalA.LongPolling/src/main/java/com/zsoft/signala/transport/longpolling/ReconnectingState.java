@@ -133,8 +133,8 @@ public class ReconnectingState extends StopableStateWithCallback {
             httpClient.addHeader(entry.getKey(), entry.getValue());
         }
 		try {
-			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
-//			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
+//			Class clazz = Class.forName("com.example.litepal01.signala.ChatInfo");
+			Class clazz = Class.forName("com.iflysse.studyapp.bean.ChatInfo");
 			Method method=clazz.getMethod("getUrls");
 			Object o=clazz.newInstance();
 			url+=(String) method.invoke(o);

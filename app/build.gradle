@@ -33,9 +33,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //    implementation 'com.github.erizet.signala:signala-longpolling:0.20'
-//    implementation project(':parallel-basic-http-client')
-//    implementation project(':SignalA')
-//    implementation project(':SignalA.LongPolling')
+    implementation project(':parallel-basic-http-client')
+    implementation project(':SignalA')
+    implementation project(':SignalA.LongPolling')
     implementation 'com.alibaba:fastjson:1.2.31'
-    implementation 'com.github.zhu2017:signalz:v1.0'
+//    implementation 'com.github.zhu2017:signalz:v1.0'
 }

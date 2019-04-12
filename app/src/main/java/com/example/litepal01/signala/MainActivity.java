@@ -3,6 +3,7 @@ package com.example.litepal01.signala;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.net.Uri;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(MainActivity.this,"线程",Toast.LENGTH_LONG).show();
 
         Button btn=findViewById(R.id.connection);
         btn.setOnClickListener(v->{
