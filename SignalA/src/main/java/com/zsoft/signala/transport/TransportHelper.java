@@ -165,7 +165,7 @@ public class TransportHelper {
 		String qs = "?transport=";
 		qs += transport;
 		try {
-			qs += "&connectionToken=" + URLEncoder.encode(connection.getConnectionToken(), "utf-8");
+			qs += "&connectionToken=" + URLEncoder.encode(TextUtils.isEmpty(connection.getConnectionToken())?"":connection.getConnectionToken(), "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			Log.e(TAG, "Unsupported message encoding error, when encoding connectionToken.");
 		}
