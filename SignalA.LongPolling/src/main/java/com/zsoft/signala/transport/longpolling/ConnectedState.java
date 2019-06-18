@@ -24,7 +24,7 @@ import com.zsoft.parallelhttpclient.ParallelHttpClient;
 public class ConnectedState extends StopableStateWithCallback {
 	protected static final String TAG = "ConnectedState";
 	private Object mCallbackLock = new Object();
-	//@SuppressWarnings("unused")aaaa
+	//@SuppressWarnings("unused")
 	//private AjaxCallback<JSONObject> mCurrentCallback = null;
 	
 	public ConnectedState(ConnectionBase connection) {
